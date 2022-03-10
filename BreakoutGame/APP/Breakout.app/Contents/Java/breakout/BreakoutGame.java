@@ -27,7 +27,6 @@ public class BreakoutGame
     private int heartwidth;
     private GraphicsText statusText;
     private GraphicsText exitText;
-    private GraphicsText playAgain;
     private List<Rectangle> brickBrokenList;
     private List<Rectangle> brickBrokenListForSpeed;
     private int countertoIncreaseSpeed;
@@ -51,10 +50,6 @@ public class BreakoutGame
         exitText = new GraphicsText("");
         exitText.setFont(FontStyle.BOLD, canvas.getHeight() / 6);
         exitText.setFillColor(Color.WHITE);
-        playAgain = new GraphicsText();
-        playAgain.setText("Play Again? \n Press Y for yes and N for no");
-        playAgain.setFont(FontStyle.BOLD, canvas.getHeight() / 6);
-        playAgain.setFillColor(Color.WHITE);
         ball = new Ball(CANVAS_LENGTH/2, CANVAS_HEIGHT/2, 5, 270 + Math.pow(-1, ThreadLocalRandom.current().nextInt(1, 2)) * ThreadLocalRandom.current().nextInt(20, 46), CANVAS_LENGTH, CANVAS_HEIGHT);
         Bricks brick = new Bricks(canvas);
         brickList = brick.getBricks();
@@ -192,9 +187,9 @@ public class BreakoutGame
         }
         statusText.setCenter(CANVAS_LENGTH/2, CANVAS_HEIGHT/1.85);
         canvas.add(statusText);
-        // exitText.setText("Click to continue");
-        // exitText.setCenter(CANVAS_LENGTH/2, CANVAS_HEIGHT/1.4);
-        // canvas.add(exitText);
+        exitText.setText("Click to exit");
+        exitText.setCenter(CANVAS_LENGTH/2, CANVAS_HEIGHT/1.4);
+        canvas.add(exitText);
         canvas.onClick(event -> 
         { 
             canvas.closeWindow();
